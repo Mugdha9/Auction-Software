@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff; 
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+}
+
+.background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child {
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+
+.shape:last-child {
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+
+
+h2, h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #000000;
+}
+
+div {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label, select {
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 10px;
+    color: #000000;
+}
+
+select {
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 300;
+    color: #000000;
+}
+
+table {
+    margin-right: 50px auto;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+#marginTable {
+    margin: 30px; 
+}
+
+#projectsTable {
+    width: 100%;
+    background-color:#ADD8E6;
+}
+
+#projectsTable thead {
+    background-color: #ADD8E6;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+td {
+    background-color: rgba(255, 255, 255, 0.27);
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+button {
+    margin-top: 50px;
+    width: 10%;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}

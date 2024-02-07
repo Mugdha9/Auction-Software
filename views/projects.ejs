@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="./assets/projects.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <h1>Projects</h1>
+
+    <% if (results && results.length > 0) { %>
+    <div>
+        <label for="sortBy">Sort By:</label>
+        <select id="sortBy">
+            <option value="recent">Recent Projects</option>
+            <option value="username">Username</option>
+            <option value="projectTitle">Project Title</option>
+            <option value="category">Category</option>
+        </select>
+    </div>
+    <% } %>
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div id="marginTable" style="display: none;">
+    <% if (results && results.length > 0) { %>
+        <table id="projectsTable" border="1" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Project Title</th>
+                    <th>User Name</th>
+                    <th style="display: none">Date Added</th>
+                    <th>Category Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(result => { %>
+                    <tr>
+                        <td><%= result.project_title %></td>
+                        <td><%= result.username %></td>
+                        <td style="display: none"><%= result.date_added %></td>
+                        <td><%= result.category%></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p style="color:black">No projects found.</p>
+    <% } %>
+
+
+    <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+    
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            console.log("In JS");
+            const dataTable = $('#projectsTable').DataTable({
+                "paging": true,
+                "pageLength": 2,
+                "order": [[2, 'asc']],
+                "deferRender": true,
+                
+            });
+            
+            $('#marginTable').css('display', 'block');
+            
+            $('#sortBy').on('change', function() {
+                const sortBy = $(this).val();
+
+                switch (sortBy) {
+                    case 'recent':
+                        dataTable.order([2, 'asc']).draw();
+                        break;
+                    case 'username':
+                        dataTable.order([1, 'asc']).draw(); 
+                        break;
+                    case 'projectTitle':
+                        dataTable.order([0, 'asc']).draw();
+                        break;
+                    case 'category':
+                        dataTable.order([3, 'asc']).draw();
+                        break; 
+                }
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
